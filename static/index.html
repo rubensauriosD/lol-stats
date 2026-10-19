@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoL Stats Tracker</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>LoL Stats Tracker</h1>
+    <div class="topbar-actions">
+      <nav id="account-tabs" class="account-tabs"></nav>
+      <button id="refresh-btn" class="secondary-btn">↻ Actualizar</button>
+      <button id="compare-btn" class="secondary-btn">Comparar cuentas</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="profile-card" id="profile-card">
+      <img id="profile-icon" class="profile-icon" alt="Icono de invocador" />
+      <div class="profile-info">
+        <div class="profile-name" id="profile-name">-</div>
+        <div class="profile-level" id="profile-level">-</div>
+      </div>
+      <div class="rank-badge" id="rank-badge">Sin clasificar</div>
+      <button id="live-btn" class="secondary-btn">¿Estoy en partida?</button>
+    </section>
+
+    <div id="live-banner" class="live-banner hidden"></div>
+
+    <section class="stat-cards" id="stat-cards">
+      <div class="stat-card">
+        <span class="stat-label">Winrate</span>
+        <span class="stat-value" id="stat-winrate">-</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Partidas (W / L)</span>
+        <span class="stat-value" id="stat-record">-</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">KDA promedio</span>
+        <span class="stat-value" id="stat-kda">-</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Ratio K+A/D</span>
+        <span class="stat-value" id="stat-kda-ratio">-</span>
+      </div>
+    </section>
+
+    <section class="trend-row">
+      <span class="trend-label">Tendencia reciente</span>
+      <div id="trend" class="trend"></div>
+      <div id="streak-badge" class="streak-badge hidden"></div>
+    </section>
+
+    <section class="mastery-section">
+      <h2>Maestría de campeones</h2>
+      <div id="mastery-list" class="mastery-list"></div>
+    </section>
+
+    <section class="charts-row">
+      <div class="chart-box chart-box-small">
+        <h2>Campeones más jugados</h2>
+        <div class="chart-canvas-wrap"><canvas id="champions-chart"></canvas></div>
+      </div>
+      <div class="chart-box chart-box-small">
+        <h2>Roles</h2>
+        <div class="chart-canvas-wrap"><canvas id="roles-chart"></canvas></div>
+      </div>
+    </section>
+
+    <section class="chart-box lp-chart-box">
+      <h2>Progreso de LP (Solo/Duo)</h2>
+      <p class="lp-chart-hint" id="lp-chart-hint"></p>
+      <div class="chart-canvas-wrap chart-canvas-wrap-lp"><canvas id="lp-chart"></canvas></div>
+    </section>
+
+    <section class="secondary-row">
+      <div class="chart-box teammates-box">
+        <h2>Compañeros frecuentes</h2>
+        <div id="teammates-list" class="teammates-list"></div>
+      </div>
+      <div class="chart-box activity-box">
+        <h2>Actividad (día/hora)</h2>
+        <div id="activity-heatmap" class="activity-heatmap"></div>
+      </div>
+    </section>
+
+    <section class="matches-section">
+      <h2>Partidas Ranked Solo/Duo</h2>
+      <div id="matches-list" class="matches-list"></div>
+      <div id="matches-sentinel" class="matches-sentinel">Cargando más partidas...</div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
